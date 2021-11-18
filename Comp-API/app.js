@@ -14,11 +14,11 @@ const connectDB = require("./db/connect");
 //TODO: const xss = require("xss-clean");
 
 //Routes
-//TODO: const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
 const compRouter = require("./routes/comps");
 
 //Middleware
-//TODO: const auth = require("./middleware/auth");
+const auth = require("./middleware/auth");
 //TODO: const notFoundMiddleware = require("./middleware/not-found");
 //TODO: const errorHandlerMiddleware = require("./middleware/error-handler");
 
@@ -40,18 +40,18 @@ app
   })
 )*/
   .use([express.urlencoded({ extended: false }), express.json()])
-// .use(helmet())
-// .use(cors())
-// .use(xss())
+  // .use(helmet())
+  // .use(cors())
+  // .use(xss())
 
-.get("/", (req, res) => {
-  res.send('<h1 style="text-align: center">Computers API</h1>')
-})
+  .get("/", (req, res) => {
+    res.send('<h1 style="text-align: center">Computers API</h1>');
+  })
 
-// .use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+  // .use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
-//TODO: .use("/api/v1/auth", authRouter)
-.use("/api/v1/comps", compRouter)
+  .use("/api/v1/auth", authRouter)
+  .use("/api/v1/comps", auth, compRouter);
 
 //TODO: .use(errorHandlerMiddleware)
 //TODO: .use(notFoundMiddleware)

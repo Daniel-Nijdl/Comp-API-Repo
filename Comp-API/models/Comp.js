@@ -5,17 +5,17 @@ const compSchema = new mongoose.Schema(
     compCase: {
       type: String,
       required: [true, "Must provide a case name"],
-      maxLength: 50,
+      maxLength: 100,
     },
     mobo: {
       type: String,
       required: [true, "Must provide a motherboard name"],
-      maxLength: 50,
+      maxLength: 100,
     },
     cpu: {
       type: String,
       required: [true, "Must provide a cpu name"],
-      maxLength: 50,
+      maxLength: 100,
     },
     gpu: {
       type: String,
@@ -38,17 +38,22 @@ const compSchema = new mongoose.Schema(
     powerSupply: {
       type: String,
       required: [true, "Must provide a power supply name"],
-      maxLength: 50,
+      maxLength: 100,
     },
     cooling: {
       type: String,
       required: [true, "Must provide name of cooling component"],
-      maxLength: 50,
+      maxLength: 100,
     },
     operatingSystem: {
       type: String,
       required: [true, "Must provide an operating system"],
       maxLength: 50,
+    },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      reqired: [true, "Must provide a user"],
     },
   },
   { timestamps: true }
