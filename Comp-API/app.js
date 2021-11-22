@@ -48,7 +48,7 @@ app
     res.send('<h1 style="text-align: center">Computers API</h1>');
   })
 
-  // .use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+  .use("/api/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
   .use("/api/v1/auth", authRouter)
   .use("/api/v1/comps", auth, compRouter)

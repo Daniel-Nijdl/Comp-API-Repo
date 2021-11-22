@@ -25,30 +25,28 @@ const compSchema = new mongoose.Schema(
     ram: {
       type: String,
       required: [true, "Must provide a ram name"],
-      maxLength: 50,
     },
     ssd: {
       type: String,
-      maxLength: 50,
     },
     hdd: {
       type: String,
-      maxLength: 50,
     },
     powerSupply: {
       type: String,
       required: [true, "Must provide a power supply name"],
-      maxLength: 100,
     },
     cooling: {
       type: String,
       required: [true, "Must provide name of cooling component"],
-      maxLength: 100,
+    },
+    cpuCooling: {
+      type: String,
+      required: [true, "Must provide name of cpu cooling component"],
     },
     operatingSystem: {
       type: String,
       required: [true, "Must provide an operating system"],
-      maxLength: 50,
     },
     createdBy: {
       type: mongoose.Types.ObjectId,

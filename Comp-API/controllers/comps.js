@@ -3,7 +3,10 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequest, NotFound } = require("../errors");
 
 const getAllComps = async (req, res) => {
-  const comps = await Comp.find({ createdBy: req.user.userID }).sort(
+  // const comps = await Comp.find({ createdBy: req.user.userID }).sort(
+  //   "createdAt"
+  // );
+  const comps = await Comp.find({ }).sort(
     "createdAt"
   );
   res.status(StatusCodes.OK).json({ comps, count: comps.length });
@@ -42,6 +45,7 @@ const updateComp = async (req, res) => {
     hdd,
     powerSupply,
     cooling,
+    cpuCooling,
     operatingSystem,
   } = req.body;
   const { userID } = req.user;
@@ -57,6 +61,7 @@ const updateComp = async (req, res) => {
     !hdd ||
     !powerSupply ||
     !cooling ||
+    !cpuCooling ||
     !operatingSystem
   ) {
     throw new BadRequest("All computer part fields must be filled");
